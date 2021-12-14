@@ -1,13 +1,12 @@
-import {Card} from "react-bootstrap";
+import {Card, CardImg} from "react-bootstrap";
 
 function Info() {
     return (
-        <Card className="bg-primary">
+        <Card className="bg-primary bg">
             <Card.Body>
                 <Card.Title>
-                    Blogs
+                    Blog
                 </Card.Title>
-
             </Card.Body>
         </Card>
     );

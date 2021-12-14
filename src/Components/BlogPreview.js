@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 function BlogPreview() {
     return (
-        <Card className="my-4">
+        <Card className="my-4 bg-light">
             <Card.Body>
                 <Card.Title>
                     Title
@@ -11,11 +11,11 @@ function BlogPreview() {
 
                 <Card.Text>
                     Text
-
                 </Card.Text>
-            <Link to="/profile" className="stretched-link media">test</Link>
 
+                <Link to="/blog/2" className="stretched-link media">test</Link>
             </Card.Body>
+
             <Card.Footer>
                 Date
             </Card.Footer>
