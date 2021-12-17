@@ -1,12 +1,14 @@
 import {Accordion, Alert, Card, Col, Dropdown, Form, Row} from "react-bootstrap";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import CustomToggle from "./CustomToggle";
 import FilterOverview from "./FilterOverview";
+import Pagination from "./Pagination";
+import {OptionContext, OrderContext, SearchContext} from "../ContextProvider";
 
-function Filter() {
-    const [search, setSearch] = useState();
-    const [filterOption, setFilterOption] = useState("Title");
-    const [order, setOrder] = useState("Descending");
+function Inputs() {
+    const {search , setSearch} = useContext(SearchContext);
+    const {option , setOption} = useContext(OptionContext);
+    const {order , setOrder} = useContext(OrderContext);
     const [opened, setOpened] = useState(false);
 
     const onFilter = () =>{
@@ -18,7 +20,7 @@ function Filter() {
     }
 
     const onSetFilterOption = (target) =>{
-        setFilterOption(target.text);
+        setOption(target.text);
         onFilterClose();
     }
 
@@ -50,7 +52,7 @@ function Filter() {
                                     <Dropdown.Item onClick={e => onSetFilterOption(e.target)}>Date</Dropdown.Item>
                                 </Dropdown.Menu>
 
-                                <Alert className="mt-3">Selected Filter Option : <b>{filterOption}</b></Alert>
+                                <Alert className="mt-3">Selected Filter Option : <b>{option}</b></Alert>
                             </Dropdown>
                         </Row>
 
@@ -94,11 +96,10 @@ function Filter() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-
-            {opened ? <FilterOverview search={search} filterOption={filterOption} order={order} onFilterClose={onFilterClose}/> : null}
+            {opened ? <FilterOverview onFilterClose={onFilterClose}/> : null}
         </Card>
 
     );
 }
 
-export default Filter;
+export default Inputs;

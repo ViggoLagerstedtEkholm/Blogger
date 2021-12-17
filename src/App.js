@@ -1,9 +1,9 @@
-import Blogs from "./Components/Blogs";
+import Blogs from "./Components/Feed/Blogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Blog from "./Components/Blog";
+import Blog from "./Components/Feed/Blog";
 
 function App() {
-  return (
+    return (
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<Blogs/>}/>

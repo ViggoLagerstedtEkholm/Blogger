@@ -1,7 +1,7 @@
 import {Container, Row} from "react-bootstrap";
-import Info from "./Info";
+import Info from "../InfoPanels/Info";
 import BlogBox from "./BlogBox";
-import Profile from "./Profile";
+import Profile from "../InfoPanels/Profile";
 
 function Blogs() {
     return (
