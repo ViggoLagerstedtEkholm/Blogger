@@ -7,7 +7,7 @@ function Profile() {
             <Card.Body>
                 <Row>
                     <Col>
-                        <Image src="https://picsum.photos/536/354" width="w-100" rounded loading="lazy"/>
+                        <Image src="https://picsum.photos/536/354" width="auto" fluid rounded/>
                     </Col>
                     <Col>
                         <h1>Hello!</h1>

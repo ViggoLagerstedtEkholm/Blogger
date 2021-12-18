@@ -2,7 +2,6 @@ import {Accordion, Alert, Card, Col, Dropdown, Form, Row} from "react-bootstrap"
 import {useContext, useState} from "react";
 import CustomToggle from "./CustomToggle";
 import FilterOverview from "./FilterOverview";
-import Pagination from "./Pagination";
 import {OptionContext, OrderContext, SearchContext} from "../ContextProvider";
 
 function Inputs() {
@@ -36,7 +35,7 @@ function Inputs() {
 
     return (
         <Card className="p-3">
-            <Accordion defaultActiveKey="0">
+            <Accordion>
                 <Accordion.Item eventKey="0" className="bg-light">
                     <Accordion.Header>Search</Accordion.Header>
                     <Accordion.Body>
