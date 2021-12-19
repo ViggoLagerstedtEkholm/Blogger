@@ -1,23 +1,23 @@
-import {Card} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-function BlogPreview() {
+function BlogPreview(props) {
+    const {date, id, image, text, title} = props.data;
+
     return (
-        <Card className="my-4 bg-light">
+        <Card className="my-2 mx-3 bg-light">
             <Card.Body>
                 <Card.Title>
-                    Title
+                    {title}
                 </Card.Title>
 
-                <Card.Text>
-                    Text
+                <Card.Text className="preview-text">
+                    {text}
                 </Card.Text>
-
-                <Link to="/blog/2" className="stretched-link media">test</Link>
+                <Button href={"/blog/" + id} className="btn-primary w-100">Visit</Button>
             </Card.Body>
-
             <Card.Footer>
-                Date
+                {new Date(date).toDateString()}
             </Card.Footer>
         </Card>
     );

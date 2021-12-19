@@ -1,19 +1,29 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
 import {RingLoader} from "react-spinners";
-import {Card} from "react-bootstrap";
+import {Button, Card, Col, Row} from "react-bootstrap";
 
 export const NotFound = () => {
     let color = useState("#b1deec");
 
     return(
-        <Card>
-            <h1>404 - Not Found!</h1>
-            <Link to="/">
-                Go Home
-            </Link>
+        <Card className="bg-transparent text-white">
+            <Card.Body>
+                <Row>
+                    <Col>
+                        <h4>404 - Not Found!</h4>
+                    </Col>
+                </Row>
 
-            <RingLoader  color={color} loading={true} size={50} margin={2}/>
+                <Row className="my-3 m-lg-3">
+                    <Button href="/">
+                        Go Home
+                    </Button>
+                </Row>
+
+                <Row className="justify-content-md-center">
+                    <RingLoader color={color} loading={true} size={100}/>
+                </Row>
+            </Card.Body>
         </Card>
     )
 }

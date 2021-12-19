@@ -1,13 +1,27 @@
 import {Accordion, Button, Card, Form, Row} from "react-bootstrap";
 import {useState} from "react";
+import {UploadBlog} from "../API/BlogAPI";
 
 function Add() {
     const [title, setTitle] = useState();
     const [body, setBody] = useState();
-    const [file, setFile] = useState();
+    const [secret, setSecret] = useState();
+    const [image, setImage] = useState();
 
     const onSubmit = (e) =>{
         e.preventDefault();
+
+        const blog = {
+            Title : title,
+            Body : body,
+            Secret : secret
+        };
+
+        UploadBlog(blog).then(response => {
+            console.log(response);
+        }).catch(error =>{
+            console.log(error);
+        });
     }
 
     return (
@@ -44,14 +58,14 @@ function Add() {
                                 <Row>
                                     <Form.Group controlId="formFile" className="mb-3">
                                         <Form.Label>Blog image</Form.Label>
-                                        <Form.Control type="file" onChange={e => setFile(e.target)}/>
+                                        <Form.Control type="file" onChange={e => setImage(e.target)}/>
                                     </Form.Group>
                                 </Row>
 
                                 <Row>
                                     <Form.Group controlId="formPlaintextPassword">
                                         <h2>Secret</h2>
-                                        <Form.Control type="text" placeholder="XXXXXXXXXX" />
+                                        <Form.Control type="text" placeholder="XXXXXXXXXX" onChange={e => setSecret(e.target.value)}/>
                                     </Form.Group>
                                 </Row>
 

@@ -3,6 +3,7 @@ import Info from "../InfoPanels/Info";
 import BlogBox from "./BlogBox";
 import Profile from "../InfoPanels/Profile";
 import Add from "../Insert/Add";
+import {ContextProvider} from "../ContextProvider";
 
 function Blogs() {
     return (
@@ -20,7 +21,9 @@ function Blogs() {
             </Row>
 
             <Row className="mt-3 text-black">
-                <BlogBox/>
+                <ContextProvider>
+                    <BlogBox/>
+                </ContextProvider>
             </Row>
         </Container>
     );

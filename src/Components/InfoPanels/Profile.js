@@ -15,6 +15,14 @@ function Profile() {
                         <p>This blog will be used during my internship at AFRY. I will upload posts each week and try to document whatever i'm working on that week.</p>
                     </Col>
                 </Row>
+                <Row className="float-end">
+                    <Col>
+                        <h1>Github</h1>
+                    </Col>
+                    <Col>
+                        <h1>LinkedIn</h1>
+                    </Col>
+                </Row>
             </Card.Body>
         </Card>
     );
