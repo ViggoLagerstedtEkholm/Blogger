@@ -13,11 +13,11 @@ function Blogs() {
             </Row>
 
             <Row className="h-100 mt-3 text-white">
-                <Add/>
+                <Profile/>
             </Row>
 
-            <Row className="h-100 mt-3 text-white">
-                <Profile/>
+            <Row className="mt-3 text-white">
+                <Add/>
             </Row>
 
             <Row className="mt-3 text-black">

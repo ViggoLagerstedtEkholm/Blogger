@@ -2,7 +2,7 @@ import {Card, CardImg} from "react-bootstrap";
 
 function Info() {
     return (
-        <Card className="bg-primary bg">
+        <Card className="bg-white text-black">
             <Card.Body>
                 <Card.Title>
                     Blog

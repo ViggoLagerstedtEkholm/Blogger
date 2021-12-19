@@ -1,7 +1,8 @@
 import {Card} from "react-bootstrap";
 
 export function FeedInfo(props) {
-    const {page} = props;
+    const {page, pagination} = props;
+    const {pageFirstResultIndex, resultsPerPage} = pagination;
 
     return (
         <Card className="bg-opacity-25 bg-info">
@@ -10,7 +11,9 @@ export function FeedInfo(props) {
             </Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <p>Page: <b>{page}</b></p>
+                    Page: <b>{page}</b>
+                    <br/>
+                    Range: <b>[{pageFirstResultIndex + 1} - {pageFirstResultIndex + resultsPerPage}]</b>
                 </Card.Text>
             </Card.Body>
         </Card>

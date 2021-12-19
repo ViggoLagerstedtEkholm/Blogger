@@ -1,8 +1,7 @@
 import {Button, Card} from "react-bootstrap";
-import {Link} from "react-router-dom";
 
 function BlogPreview(props) {
-    const {date, id, image, text, title} = props.data;
+    const {date, id, text, title} = props.data;
 
     return (
         <Card className="my-2 mx-3 bg-light">

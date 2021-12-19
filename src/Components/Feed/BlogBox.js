@@ -1,44 +1,42 @@
-import {Card, Row} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import BlogPreview from "./BlogPreview";
 import Inputs from "../Filters/Inputs";
 import {useContext, useEffect, useState} from "react";
 import {Search} from "../API/BlogAPI";
-import {OptionContext, OrderContext, PageContext, SearchContext} from "../ContextProvider";
+import {OrderContext, PageContext, SearchContext} from "../ContextProvider";
 import Pagination from "../Filters/Pagination";
 import Loading from "./States/Loading";
 import FeedInfo from "./FeedInfo";
 
 function BlogBox() {
     const [blogs, setBlogs] = useState([]);
+    const [pagination, setPagination] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const {search} = useContext(SearchContext);
-    const {option} = useContext(OptionContext);
     const {order} = useContext(OrderContext);
     const {page} = useContext(PageContext);
 
     useEffect(() =>{
         const filter = {
             search,
-            option,
             order,
             page
         };
 
         Search(filter).then(response => {
-            setBlogs(response);
+            const {blogs, pagination} = response;
+
+            setBlogs(blogs);
+            setPagination(pagination);
             setLoading(false);
         }).catch(error =>{
             console.log(error);
             setLoading(false);
         });
-    }, [page])
+    }, [search, order, page])
 
     const renderItems = () =>{
-        if(loading){
-            return <Loading/>
-        }
-
         if(blogs.length === 0){
             return <Card className="m-2">
                 <Card.Body>
@@ -47,7 +45,7 @@ function BlogBox() {
             </Card>
         }
 
-        return blogs.map((data) => <BlogPreview data={data}/>)
+        return blogs.map((data, key) => <BlogPreview key={key} data={data}/>)
     }
 
     return (
@@ -58,14 +56,20 @@ function BlogBox() {
             </Card.Header>
             <Card.Body>
                 <Card.Title>
-                    <FeedInfo page={page}/>
+                    {
+                        loading ? <Loading/> : <FeedInfo page={page} pagination={pagination}/>
+                    }
                 </Card.Title>
             </Card.Body>
 
-            {renderItems()}
+            {
+                loading ? <Loading/> : renderItems()
+            }
 
             <Card.Footer>
-                <Pagination/>
+                {
+                    loading ? <Loading/> : <Pagination pagination={pagination}/>
+                }
             </Card.Footer>
         </Card>
     );

@@ -11,15 +11,16 @@ function Add() {
     const onSubmit = (e) =>{
         e.preventDefault();
 
-        const blog = {
-            Title : title,
-            Body : body,
-            Secret : secret
-        };
+        const formData = new FormData();
+        formData.append("Title", title);
+        formData.append("Body", body);
+        formData.append("Image", image);
+        formData.append("Secret", secret);
 
-        UploadBlog(blog).then(response => {
-            console.log(response);
+        UploadBlog(formData).then(() => {
+            window.location.reload();
         }).catch(error =>{
+            alert('Something went wrong.');
             console.log(error);
         });
     }
@@ -58,7 +59,7 @@ function Add() {
                                 <Row>
                                     <Form.Group controlId="formFile" className="mb-3">
                                         <Form.Label>Blog image</Form.Label>
-                                        <Form.Control type="file" onChange={e => setImage(e.target)}/>
+                                        <Form.Control type="file" onChange={e => setImage(e.target.files[0])}/>
                                     </Form.Group>
                                 </Row>
 

@@ -44,6 +44,8 @@ function Blog() {
             <Card>
                 <Card.Header>{blog.title}</Card.Header>
                 <Card.Body>
+                    <Card.Img variant="top" src={`data:image/jpeg;base64,${blog.image}`}/>
+                    <hr/>
                     <Card.Title>{blog.text}</Card.Title>
                 </Card.Body>
                 <Card.Footer>
